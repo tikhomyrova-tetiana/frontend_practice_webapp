@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router";
@@ -10,14 +11,13 @@ export default function SpaceCard() {
   const dispatch = useDispatch();
   const routeParams = useParams();
   console.log("space with story", space);
-  // const { id, title, description } = props;
 
   useEffect(() => {
     dispatch(fetchOneSpace(routeParams.id));
   }, [dispatch]);
 
   return space ? (
-    <div>
+    <div className="spacePage">
       <h2>Space</h2>
       <div key={space.id}>
         <h3>{space.title}</h3>
@@ -27,6 +27,7 @@ export default function SpaceCard() {
             <div>
               <h3>{s.name}</h3>
               <p>{s.content}</p>
+              <img src={s.imageUrl} alt="story" />
             </div>
           ))}
         </p>
