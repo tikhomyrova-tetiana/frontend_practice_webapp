@@ -2,18 +2,17 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router";
-import { selectOneSpace } from "../../store/spacePage/selectors";
-import { fetchSpace } from "../../store/spacePage/thunk";
-// import { NavLink } from "react-router-dom";
+import { selectSpaceDetail } from "../../store/spaces/selectors";
+import { fetchOneSpace } from "../../store/spaces/thunk";
 
 export default function SpaceCard() {
-  const space = useSelector(selectOneSpace);
+  const space = useSelector(selectSpaceDetail);
   const dispatch = useDispatch();
   const routeParams = useParams();
   // const { id, title, description } = props;
 
   useEffect(() => {
-    dispatch(fetchSpace(routeParams.id));
+    dispatch(fetchOneSpace(routeParams.id));
   }, [dispatch]);
 
   return space ? (

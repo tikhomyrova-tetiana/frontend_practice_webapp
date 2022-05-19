@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { selectAllSpaces } from "../../store/spaces/selectors";
 import { fetchSpaces } from "../../store/spaces/thunk";
-import { NavLink } from "react-router-dom";
+import SpaceCard from "../../components/SpaceCard/SpaceCard";
 
 export default function Homepage() {
   const dispatch = useDispatch();
@@ -21,15 +21,14 @@ export default function Homepage() {
         ? "Loading"
         : spaces.map((space) => (
             <div>
-              <div key={space.id}>
-                <p>{space.title}</p>
-                <p>{space.description}</p>
-              </div>
-              <button>
-                <NavLink className="Link" to={`/spaces/${space.id}`}>
-                  View Space
-                </NavLink>
-              </button>
+              <SpaceCard
+                key={space.id}
+                id={space.id}
+                title={space.title}
+                description={space.description}
+                backgroundColor={space.backgroundColor}
+                color={space.color}
+              />
             </div>
           ))}
     </div>
