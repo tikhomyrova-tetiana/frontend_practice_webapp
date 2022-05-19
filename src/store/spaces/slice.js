@@ -6,14 +6,14 @@ const initialState = {
 };
 
 export const feed = createSlice({
-  name: "feed",
+  name: "spaces",
   initialState,
   reducers: {
     startLoading: (state) => {
       state.loading = true;
     },
     spacesFetched: (state, action) => {
-      state.spaces = [...state.spaces, ...action.payload];
+      state.spaces = action.payload;
       state.loading = false;
     },
   },

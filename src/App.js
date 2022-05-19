@@ -11,19 +11,20 @@ import Login from "./pages/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
-import HeroBanner from "./components/HeroBanner";
+// import HeroBanner from "./components/HeroBanner";
 import Homepage from "./pages/Homepage/Homepage";
+import SpacePage from "./pages/SpacePage/SpacePage";
 
 // const Home = () => (
 //   <HeroBanner>
 //     <h1>Home</h1>
 //   </HeroBanner>
 // );
-const Other = () => (
-  <HeroBanner>
-    <h1>Other</h1>
-  </HeroBanner>
-);
+// const Other = () => (
+//   <HeroBanner>
+//     <h1>Other</h1>
+//   </HeroBanner>
+// );
 
 function App() {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ function App() {
       {isLoading ? <Loading /> : null}
       <Routes>
         <Route exact path="/" element={<Homepage />} />
-        <Route path="/other" element={<Other />} />
+        <Route path="/spaces/:id" element={<SpacePage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
       </Routes>
