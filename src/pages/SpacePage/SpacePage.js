@@ -9,6 +9,7 @@ export default function SpaceCard() {
   const space = useSelector(selectSpaceDetail);
   const dispatch = useDispatch();
   const routeParams = useParams();
+  console.log("space with story", space);
   // const { id, title, description } = props;
 
   useEffect(() => {
@@ -21,6 +22,14 @@ export default function SpaceCard() {
       <div key={space.id}>
         <h3>{space.title}</h3>
         <p>{space.description}</p>
+        <p>
+          {space.stories.map((s) => (
+            <div>
+              <h3>{s.name}</h3>
+              <p>{s.content}</p>
+            </div>
+          ))}
+        </p>
       </div>
     </div>
   ) : (
