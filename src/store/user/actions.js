@@ -7,6 +7,7 @@ import {
   loginSuccess,
   logOut,
   storyDeleteSuccess,
+  storyPostedSuccess,
   tokenStillValid,
 } from "./slice";
 
@@ -68,7 +69,6 @@ export const login = (email, password) => {
         loginSuccess({
           token: response.data.token,
           user: response.data.user,
-          space: response.data.space,
         })
       );
       dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500));
@@ -148,3 +148,23 @@ export const deleteStory = (id) => async (dispatch, getState) => {
     dispatch(appDoneLoading());
   }
 };
+
+export const postStory =
+  (name, content, imageUrl) => async (dispatch, getState) => {
+    try {
+      const spaceId = getState().user.profile.space.id;
+
+      dispatch(appLoading());
+      const response = await axios.post(`${apiUrl}/spaces/story`, {
+        name,
+        content,
+        imageUrl,
+        spaceId,
+      });
+      dispatch(storyPostedSuccess(response.data));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      console.log(error.message);
+      dispatch(appDoneLoading());
+    }
+  };

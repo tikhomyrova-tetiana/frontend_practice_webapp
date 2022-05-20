@@ -14,13 +14,11 @@ export const userSlice = createSlice({
       localStorage.setItem("token", action.payload.token);
       state.token = action.payload.token;
       state.profile = action.payload.user;
-      state.profile.space = action.payload.space;
     },
     logOut: (state, action) => {
       localStorage.removeItem("token");
       state.token = null;
       state.profile = null;
-      state.profile.space = null;
       //we need to add last for space
     },
     tokenStillValid: (state, action) => {
@@ -33,10 +31,21 @@ export const userSlice = createSlice({
         (story) => story.id !== storyId
       );
     },
+    storyPostedSuccess: (state, action) => {
+      state.profile.space.stories = [
+        ...state.profile.space.stories,
+        action.payload,
+      ];
+    },
   },
 });
 
-export const { loginSuccess, logOut, tokenStillValid, storyDeleteSuccess } =
-  userSlice.actions;
+export const {
+  loginSuccess,
+  logOut,
+  tokenStillValid,
+  storyDeleteSuccess,
+  storyPostedSuccess,
+} = userSlice.actions;
 
 export default userSlice.reducer;
