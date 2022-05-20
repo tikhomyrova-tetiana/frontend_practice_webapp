@@ -61,7 +61,7 @@ We are building a webapp where people can have their own space and post stories 
 | The space is stored in the redux store in the frontend                                         | 1      |
 | Total                                                                                          | 5      |
 
----
+---JUST FOR BACKEND PART
 
 ### 4. As a logged in user I want to be able to view my space and delete my own stories
 

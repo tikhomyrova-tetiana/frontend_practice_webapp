@@ -13,17 +13,17 @@ import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
 // import HeroBanner from "./components/HeroBanner";
 import Homepage from "./pages/Homepage/Homepage";
-import SpacePage from "./pages/SpacePage/SpacePage";
 import SpaceCard from "./pages/SpacePage/SpacePage";
+import MySpace from "./pages/MySpace/MySpace";
 
 // const Home = () => (
 //   <HeroBanner>
-//     <h1>Home</h1>
+//     <h1>Spaces</h1>
 //   </HeroBanner>
 // );
 // const Other = () => (
 //   <HeroBanner>
-//     <h1>Other</h1>
+//     <h1>My space</h1>
 //   </HeroBanner>
 // );
 
@@ -45,6 +45,7 @@ function App() {
         <Route path="/spaces/:id" element={<SpaceCard />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/myspace" element={<MySpace />} />
       </Routes>
     </div>
   );
